@@ -1,155 +1,150 @@
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap');
 
-  body {
-      font-family: 'JetBrains Mono', monospace;
-      overflow-x: hidden;
-  }
+body {
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+}
 
-  .typing-area {
-      font-size: 1.5rem;
-      line-height: 1.8;
-      letter-spacing: 0.05em;
-  }
+.typing-area {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    height: 300px;
+    overflow-y: scroll;
+    /* Changed from 'auto' to 'scroll' to keep the scrollbar visible */
+    padding: 20px;
+    background-color: #282c34;
+    color: #abb2bf;
+}
 
-  .word {
-      position: relative;
-      margin-right: 0.5rem;
-      transition: all 0.1s ease;
-  }
+.word {
+    position: relative;
+    margin-right: 0.5rem;
+    transition: all 0.1s ease;
+    will-change: transform;
+}
 
-  .word.current {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      padding: 0 2px;
-  }
+.word.current {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0 2px;
+}
 
-  .word.correct {
-      color: #4ade80;
-      opacity: 0.6;
-  }
+.word.correct {
+    color: #4ade80;
+    opacity: 0.6;
+}
 
-  .word.incorrect {
-      color: #f87171;
-      background: rgba(248, 113, 113, 0.1);
-      border-radius: 4px;
-      padding: 0 2px;
-  }
+.word.incorrect {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+    border-radius: 4px;
+    padding: 0 2px;
+}
 
-  .char {
-      position: relative;
-      transition: all 0.1s ease;
-  }
+.char {
+    position: relative;
+    transition: all 0.1s ease;
+}
 
-  .char.correct {
-      color: #4ade80;
-  }
+.char.correct {
+    color: #4ade80;
+}
 
-  .char.incorrect {
-      color: #f87171;
-      background: rgba(248, 113, 113, 0.2);
-      border-radius: 2px;
-  }
+.char.incorrect {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.2);
+    border-radius: 2px;
+}
 
-  .char.current {
-      animation: blink 1s infinite;
-  }
+.char.current {
+    animation: blink 1s infinite;
+}
 
-  .caret {
-      position: absolute;
-      width: 2px;
-      height: 1.8rem;
-      background: #fbbf24;
-      animation: blink 1s infinite;
-      transition: all 0.1s ease;
-      z-index: 10;
-  }
+.caret {
+    position: absolute;
+    width: 2px;
+    height: 1.8rem;
+    background: #fbbf24;
+    animation: blink 1s infinite;
+    transition: all 0.1s ease;
+    z-index: 10;
+}
 
-  @keyframes blink {
+@keyframes blink {
 
-      0%,
-      50% {
-          opacity: 1;
-      }
+    0%,
+    50% {
+        opacity: 1;
+    }
 
-      51%,
-      100% {
-          opacity: 0;
-      }
-  }
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
 
-  .stats-animate {
-      animation: statsPulse 0.3s ease;
-  }
+.stats-animate {
+    animation: statsPulse 0.3s ease;
+}
 
-  @keyframes statsPulse {
-      0% {
-          transform: scale(1);
-      }
+@keyframes statsPulse {
+    0% {
+        transform: scale(1);
+    }
 
-      50% {
-          transform: scale(1.05);
-      }
+    50% {
+        transform: scale(1.05);
+    }
 
-      100% {
-          transform: scale(1);
-      }
-  }
+    100% {
+        transform: scale(1);
+    }
+}
 
-  .fade-in {
-      animation: fadeIn 0.5s ease;
-  }
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
 
-  @keyframes fadeIn {
-      from {
-          opacity: 0;
-          transform: translateY(20px);
-      }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-      to {
-          opacity: 1;
-          transform: translateY(0);
-      }
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-  .result-card {
-      animation: slideUp 0.6s ease;
-  }
+.result-card {
+    animation: slideUp 0.6s ease;
+}
 
-  @keyframes slideUp {
-      from {
-          opacity: 0;
-          transform: translateY(40px);
-      }
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
 
-      to {
-          opacity: 1;
-          transform: translateY(0);
-      }
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-  .progress-bar {
-      transition: width 0.2s ease;
-  }
+.progress-bar {
+    transition: width 0.2s ease;
+}
 
-  .word-input {
-      position: absolute;
-      left: -9999px;
-      opacity: 0;
-  }
+.word-input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+}
 
-  .typing-area:focus-within .caret {
-      animation: none;
-      opacity: 1;
-  }
-
-  .typing-area {
-      height: 600px;
-      padding: 20px;
-      height: 300px;
-      overflow-y: scroll;
-      font-family: monospace;
-      font-size: 1.2rem;
-      line-height: 1.5;
-      background-color: #282c34;
-      color: #abb2bf;
-  }
+.typing-area:focus-within .caret {
+    animation: none;
+    opacity: 1;
+}
