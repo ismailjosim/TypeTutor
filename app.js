@@ -16,7 +16,7 @@ let gameState = {
 	errors: [],
 	wpmHistory: [],
 	rawWpmHistory: [],
-	timerInterval: null, // Add timer interval reference
+	timerInterval: null,
 }
 
 // Word lists
@@ -24,8 +24,6 @@ const commonWords = [
 	'the',
 	'of',
 	'and',
-	'a',
-	'to',
 	'in',
 	'is',
 	'you',
@@ -40,13 +38,9 @@ const commonWords = [
 	'with',
 	'his',
 	'they',
-	'i',
-	'at',
-	'be',
 	'this',
 	'have',
 	'from',
-	'or',
 	'one',
 	'had',
 	'by',
@@ -164,7 +158,7 @@ const commonWords = [
 	'still',
 	'learn',
 	'should',
-	'america',
+	'American',
 	'world',
 	'high',
 	'every',
@@ -907,7 +901,7 @@ style.textContent = `
 	.typing-area {
 		position: relative;
 		min-height: 200px;
-		will-change: transform; /* Optimize for animations */
+		will-change: transform;
 	}
 
 	.word {
@@ -1009,7 +1003,7 @@ function exportResults() {
 		type: 'application/json',
 	})
 	const url = URL.createObjectURL(blob)
-	const a = document.createElement('a')
+	const a = document.createElement()
 	a.href = url
 	a.download = `typing-test-${Date.now()}.json`
 	a.click()
